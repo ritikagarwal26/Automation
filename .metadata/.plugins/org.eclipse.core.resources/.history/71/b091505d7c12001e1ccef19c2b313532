@@ -1,0 +1,69 @@
+package DataDriven;
+
+import java.io.FileInputStream;
+
+import java.io.IOException;
+import java.util.Properties;
+import java.util.Scanner;
+
+import org.apache.poi.EncryptedDocumentException;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+
+public class fetchdata {
+
+	public static void main(String[] args) throws EncryptedDocumentException, IOException {
+		
+
+//		FileInputStream fls =new FileInputStream("D:\\java\\Automation\\Automation\\data\\Book1.xlsx");
+//		Workbook workbook = WorkbookFactory.create(fls);
+//		Sheet sh = workbook.getSheet("Sheet1");
+//		Row rw = sh.getRow(3);
+//		Cell cl = rw.getCell(3);
+//		System.out.println(cl.getNumericCellValue());
+		
+		
+		
+		
+		
+		FileInputStream fls =new FileInputStream("D:\\java\\Automation\\Automation\\data\\facebook.properties");
+		Properties p = new Properties();
+		p.load(fls);
+		System.out.println(p.getProperty("url"));
+		
+		
+//		WebDriver driver;
+//	    Scanner browser= new Scanner(System.in);
+//	    System.setProperty("webdriver.chrome.driver", "D:\\java\\Automation\\Automation\\drivers\\chromedriver.exe");
+//	    System.setProperty("webdriver.edge.driver", "D:\\java\\Automation\\Automation\\drivers\\msedgedriver.exe");
+//	    
+//	    
+//	    System.out.println("For Chrome : 1");
+//	    System.out.println("For Edge : 2");
+//	    System.out.println("Enter choose Browser");
+//	    int chooseBrowser = browser.nextInt();
+//	    
+//	    switch (chooseBrowser) {
+//	        case 1 -> {
+//	            driver = new ChromeDriver();
+//	            driver.manage().window().maximize();
+//	            
+//	            
+//	        }
+//	        case 2 -> {
+//	            driver = new EdgeDriver();
+//	            driver.manage().window().maximize();
+//	        }
+//	        default -> System.out.println("choose any");
+//	    	}
+	}
+
+}
+
+

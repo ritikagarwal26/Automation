@@ -1,0 +1,80 @@
+package Automation;
+
+import java.util.Scanner;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class Action_class extends Browser{
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		WebDriver driver = null;
+		
+	    Scanner browser= new Scanner(System.in);
+	    System.setProperty("webdriver.chrome.driver", "D:\\java\\Automation\\Automation\\drivers\\chromedriver.exe");
+	    System.setProperty("webdriver.edge.driver", "D:\\java\\Automation\\Automation\\drivers\\msedgedriver.exe");
+	    
+	    
+	    System.out.println("For Chrome : 1");
+	    System.out.println("For Edge : 2");
+	    System.out.println("Enter choose Browser");
+	    int chooseBrowser = browser.nextInt();
+	    
+	    switch (chooseBrowser) {
+	        case 1 -> {
+	            driver = new ChromeDriver();
+	            driver.manage().window().maximize();
+//	            driver.get("https://www.myntra.com/");
+//	            WebElement womenlink = driver.findElement(By.linkText("WOMEN"));
+	            Actions action = new Actions(driver);
+//	            action.moveToElement(womenlink).perform();
+//	            action.click(womenlink).perform();
+//	            driver.get("https://jqueryui.com/draggable/");
+	            
+	            
+//	            driver.switchTo().frame(0);
+//	            WebElement drag = driver.findElement(By.id("draggable"));
+//	            
+//	            action.dragAndDropBy(drag, 100, 100).perform();
+//	            action.moveByOffset(380, 190).click().perform();
+	            Thread.sleep(5000);
+	            
+	            
+	            
+	        }
+	        case 2 -> {
+	            driver = new EdgeDriver();
+	            driver.manage().window().maximize();
+//	            driver.get("https://jqueryui.com/draggable/");
+	            Actions action = new Actions(driver);
+//	            driver.get("https://jqueryui.com/draggable/");
+	            
+	            
+//	            driver.switchTo().frame(0);
+//	            WebElement drag = driver.findElement(By.id("draggable"));
+	            
+//	            action.dragAndDropBy(drag, 100, 100).perform();
+//	            action.moveByOffset(380, 190).click().perform();
+//	        	driver.switchTo().defaultContent(); 
+	        	
+	            
+	            driver.get("https://www.kirupa.com/html5/press_and_hold.htm");
+	            WebElement item = driver.findElement(By.id("item"));
+	            action.clickAndHold(item).perform();
+	            Thread.sleep(10000);
+	            action.release(item).perform();
+	        }
+	        default -> System.out.println("choose any");
+	    	}
+	    Thread.sleep(5000);
+	driver.close();
+	
+	
+	}
+
+}

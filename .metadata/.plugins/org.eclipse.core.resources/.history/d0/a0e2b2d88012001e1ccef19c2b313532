@@ -1,0 +1,53 @@
+package Objects;
+
+import static org.testng.Assert.assertEquals;
+
+import java.io.File;
+
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import com.google.common.io.Files;
+
+public class HomePage {
+	
+	WebDriver driver;
+	
+	public HomePage(WebDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+	}
+	
+	@FindBy(id = "nav-link-accountList-nav-line-1") WebElement Login_Link;
+	
+	public void NavigateToLogin() {
+		Login_Link.click();
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Exception:"+e.getMessage());
+		}
+		String Title = driver.getTitle();
+		assertEquals(Title, "Amazon Sign In");
+	}
+	
+	public boolean verifyHomePage() {
+		String Title = driver.getTitle();
+		assertEquals(Title, "Online Shopping site in India: Shop Online for Mobiles, Books, Watches, Shoes and More - Amazon.in");
+		return true;
+	}
+	
+	
+	public void Screenshot() {
+	TakesScreenshot ts= (TakesScreenshot)driver;
+    File source = ts.getScreenshotAs(OutputType.FILE);
+//    File source = screen.getScreenshotAs(OutputType.FILE);
+    File destination = new File("D:\\java\\Automation\\Automation\\Screenshot\\Screenshot1"+".png");
+    Files.copy(source, destination);
+	}
+}

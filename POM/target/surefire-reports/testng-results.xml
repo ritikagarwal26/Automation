@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2023-06-23T17:52:49 IST" name="Surefire suite" finished-at="2023-06-23T17:53:11 IST" duration-ms="21871">
+    <groups>
+    </groups>
+    <test started-at="2023-06-23T17:52:49 IST" name="Surefire test" finished-at="2023-06-23T17:53:11 IST" duration-ms="21871">
+      <class name="Test_Scenarios.TestMethods_GoogleSearch">
+        <test-method is-config="true" signature="BeforeTest()[pri:0, instance:Test_Scenarios.TestMethods_GoogleSearch@3967e60c]" started-at="2023-06-23T17:52:49 IST" name="BeforeTest" finished-at="2023-06-23T17:52:54 IST" duration-ms="4921" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- BeforeTest -->
+        <test-method signature="SearchOperation()[pri:0, instance:Test_Scenarios.TestMethods_GoogleSearch@3967e60c]" started-at="2023-06-23T17:52:54 IST" name="SearchOperation" finished-at="2023-06-23T17:52:58 IST" duration-ms="3866" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SearchOperation -->
+        <test-method signature="VerifyandAccessFacebook()[pri:1, instance:Test_Scenarios.TestMethods_GoogleSearch@3967e60c]" started-at="2023-06-23T17:52:58 IST" name="VerifyandAccessFacebook" finished-at="2023-06-23T17:53:03 IST" duration-ms="4795" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- VerifyandAccessFacebook -->
+        <test-method signature="VerifyLogin()[pri:2, instance:Test_Scenarios.TestMethods_GoogleSearch@3967e60c]" started-at="2023-06-23T17:53:03 IST" name="VerifyLogin" finished-at="2023-06-23T17:53:11 IST" duration-ms="7880" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- VerifyLogin -->
+        <test-method is-config="true" signature="AfterTest()[pri:0, instance:Test_Scenarios.TestMethods_GoogleSearch@3967e60c]" started-at="2023-06-23T17:53:11 IST" name="AfterTest" finished-at="2023-06-23T17:53:11 IST" duration-ms="319" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AfterTest -->
+      </class> <!-- Test_Scenarios.TestMethods_GoogleSearch -->
+    </test> <!-- Surefire test -->
+  </suite> <!-- Surefire suite -->
+</testng-results>

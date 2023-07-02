@@ -1,0 +1,90 @@
+package Test_Scenario;
+
+import java.io.FileInputStream;
+import java.time.Duration;
+import java.util.Properties;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.testng.annotations.*;
+
+import Objects.HomePage;
+import Objects.LoginPage;
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class Login_Test {
+	
+	FileInputStream fls =new FileInputStream("D:\\java\\Automation\\Project1\\Data_Files\\data.properties");
+	Properties p = new Properties();
+	p.load(fls);
+	System.out.println(p.getProperty("url"));
+	
+	
+	WebDriver driver;
+	LoginPage login;
+	HomePage home;
+	
+	@BeforeTest
+	
+	public void BeforeTest() {
+		WebDriverManager.chromedriver().setup();
+		driver = new ChromeDriver();
+//		WebDriverManager.edgedriver().setup();
+//		driver = new EdgeDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		
+	}
+	
+	@Test
+	(priority=3)
+	  public void valid() {
+		home = new HomePage(driver);
+		login = new LoginPage(driver);
+		driver.get("https://www.amazon.in/");
+		home.NavigateToLogin();
+		login.Enter_UserName(validMobile);
+		login.VerifyMobile();
+		login.Enter_Password(validPassword);
+		login.Verify_Sign_in();
+		if(home.verifyHomePage()) {
+			System.out.println("pass");
+		}
+	}
+	
+	@Test
+	  (priority=2)
+	  public void invalidPassword() {
+		home = new HomePage(driver);
+		login = new LoginPage(driver);
+		driver.get("https://www.amazon.in/");
+		home.NavigateToLogin();
+		login.Enter_UserName(validMobile);
+		login.VerifyMobile();
+		login.Enter_Password(invalidPassword);
+		login.Verify_Sign_in();
+		if(login.PasswordError()) {
+			System.out.println("pass");
+		}
+	}
+	
+	@Test
+	  (priority=1)
+	  public void invalidMobile() {
+		home = new HomePage(driver);
+		login = new LoginPage(driver);
+		driver.get("https://www.amazon.in/");
+		home.NavigateToLogin();
+		login.Enter_UserName(invalidMobile);
+		login.VerifyMobile();
+		if(login.MobileError()) {
+			System.out.println("pass");
+		}
+	}
+	
+	@AfterTest
+	public void AfterTest() {
+		driver.quit();
+	}
+}

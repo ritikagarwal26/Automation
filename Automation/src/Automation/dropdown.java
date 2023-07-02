@@ -1,0 +1,80 @@
+package Automation;
+
+import java.util.*;
+import org.asynchttpclient.netty.handler.WebSocketHandler;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class dropdown extends Browser{
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		WebDriver driver = null;
+		
+	    Scanner browser= new Scanner(System.in);
+	    System.setProperty("webdriver.chrome.driver", "D:\\java\\Automation\\Automation\\drivers\\chromedriver.exe");
+	    System.setProperty("webdriver.edge.driver", "D:\\java\\Automation\\Automation\\drivers\\msedgedriver.exe");
+	    
+	    
+	    System.out.println("For Chrome : 1");
+	    System.out.println("For Edge : 2");
+	    System.out.println("Enter choose Browser");
+	    int chooseBrowser = browser.nextInt();
+	    
+	    switch (chooseBrowser) {
+	        case 1 -> {
+	            driver = new ChromeDriver();
+	            driver.manage().window().maximize();
+	            driver.get("https://demoqa.com/select-menu");
+//	            WebElement dropdown = driver.findElement(By.id("oldSelectMenu"));
+	            WebElement dropdown = driver.findElement(By.id("cars"));
+	            Select select = new Select(dropdown);
+//	            boolean multiple = select.isMultiple();
+//	            if(multiple) {
+//	            	System.out.println("fail");
+//	            }else {
+//	            	System.out.println("pass");
+//	            }
+	            
+//	            List<WebElement> alloption = select.getOptions();
+//	            System.out.println(alloption.size());
+//	            
+//	            for(WebElement option:alloption) {
+//	              System.out.println(option.getText());
+//	            }
+	            
+	            select.selectByIndex(0);
+	            Thread.sleep(2000);
+	            select.selectByValue("saab");
+	            Thread.sleep(2000);
+	            select.selectByVisibleText("Opel");
+	            
+	            List<WebElement> allselect = select.getAllSelectedOptions();
+	            for(WebElement option:allselect) {
+		              System.out.println(option.getText());
+		            }
+	            
+	            WebElement firstoption = select.getFirstSelectedOption();
+	            System.out.println(firstoption.getText());
+	        }
+	        case 2 -> {
+	            driver = new EdgeDriver();
+	            driver.manage().window().maximize();
+	            driver.get("https://demoqa.com/select-menu");
+	            
+	            Thread.sleep(5000);
+	        }
+	        default -> System.out.println("choose any");
+	    	}
+	    Thread.sleep(5000);
+	driver.close();
+	
+	
+	}
+
+}

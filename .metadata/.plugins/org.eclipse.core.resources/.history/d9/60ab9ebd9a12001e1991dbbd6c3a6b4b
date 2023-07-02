@@ -1,0 +1,85 @@
+package Objects;
+
+import static org.testng.Assert.assertEquals;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+//import module.LocaterUtil;
+
+public class LoginPage {
+
+	WebDriver driver;
+
+	public LoginPage(WebDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+	}
+
+	@FindBy(id = "ap_email")
+	WebElement UserName_Text;
+	@FindBy(id = "continue")
+	WebElement Continue_Btn;
+	@FindBy(id = "ap_password")
+	WebElement Password_Text;
+	@FindBy(id = "signInSubmit")
+	WebElement Login_Btn;
+	@FindBy(id = "createAccountSubmit")
+	WebElement Reg_Btn;
+	@FindBy(id = "continue")
+	WebElement Get_Otp_Btn;
+	@FindBy(xpath = "//h4[text() =\"Incorrect phone number\"]")
+	WebElement MobileErrorText;
+	@FindBy(xpath = "//h4[text() =\"Important Message!\"]")
+	WebElement PasswordErrorText;
+
+	public void Enter_UserName(String Mobile) {
+		UserName_Text.sendKeys(Mobile);
+	}
+
+	public void VerifyMobile() {
+		Continue_Btn.click();
+		String Title = driver.getTitle();
+		assertEquals(Title, "Amazon Sign In");
+	}
+
+	public boolean MobileError() {
+		String Error = MobileErrorText.getText();
+		assertEquals(Error, "Incorrect phone number");
+		return true;
+	}
+
+	public void Enter_Password(String Password) {
+		Password_Text.sendKeys(Password);
+		
+	}
+
+	public void Verify_Sign_in() {
+		Login_Btn.click();
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Exception:" + e.getMessage());
+		}
+	}
+
+	public boolean PasswordError() {
+		String Error = PasswordErrorText.getText();
+		assertEquals(Error, "There was a problem");
+		return true;
+	}
+
+	public void NavigateToRegistration() {
+		Reg_Btn.click();
+		String Title = driver.getTitle();
+		assertEquals(Title, "Amazon Registration");
+
+	}
+
+	public void GetOTP() {
+		Get_Otp_Btn.click();
+	}
+}

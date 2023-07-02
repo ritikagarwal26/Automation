@@ -1,0 +1,5 @@
+send("admin")
+send({"TAB"})
+send("admin")
+send({"TAB"})
+send({"ENTER"})

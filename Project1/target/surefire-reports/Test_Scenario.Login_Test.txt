@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: Test_Scenario.Login_Test
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 36.04 s - in Test_Scenario.Login_Test
